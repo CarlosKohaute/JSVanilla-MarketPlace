@@ -9,14 +9,12 @@
   </head>
   <body>
     <nav>
-      <h1>WellCome to my marketplace</h1>
-      <a href="">Principal</a>
-      <a href="">Incluir novo</a>
+      <h3>Seja bem vindo!</h3>
     </nav>
     <section class="home">
       <div class="home_header Header">
         <div class="row">
-          </div>
+          <div class="header_logo logo">
           <div class="header_options options">
             <div class="options_bag bag">
               <img
@@ -29,26 +27,62 @@
           </div>
         </div>
       </div>
+      <section class="create-button-modal">
+        <button type="button" class="default-button" onclick="openModal()">Cadastrar novo Celular</button>
+      </section>
+      <section class="modal-overlay" id="overlay">
+        <div class="card-modal">
+          <div class="modal-header">
+            <h2 id="tittle-header-modal">Cadastrar novo Celular</h2>
+            <a onclick="closeModal()"
+            class="close-modal">X</a>
+          </div>
+          <div class="modal-body">
+          <div>
+            <input type="hidden" id="id">
+            <input type="text" name="name" id="name" placeholder="Nome do Celular">
+            <input type="number" name="price" id="price" placeholder="Preço do Celular">
+            <textarea  type="text" name="description" id="description" placeholder='Descrição do Celular' rows="3" > </textarea>
+            <input type="text" name="photo" id="photo" placeholder="Link da foto do Celular">
+            <button id="button-form-modal" onclick="registerCell()">Cadastrar</button>
+          </div>
+        </div>
+      </section>
+      <section class="modal-overlay"  id="overlay-delete">
+          <div class="modal"> 
+            <div class="modal-header">
+            <h2 id="tittle-header-modal">Confirmação de deleção</h2>
+            <a onclick="closeModalDelete()"
+            class="close-modal">X</a>
+          </div>
+        <div class="modal-body-delete">
+          <p>Deseja realmente apagar esse celular?</p>
+          <div class="btns_delete">
+            <button class="btn_delete_no btn_delete" onclick="closeModalDelete()">Não!</button>
+            <button class="btn_delete_yes btn_delete" >Sim!</button>
+          </div>
+        </div>
+        </div>
+      </section>
       <h2>Celular escolhido:</h2>
-      <div class="chosed-cell-space">
-        <div id="chosed-cell-input-space">
+      <div class="chosed_cell-space">
+        <div id="chosed_cell-space-input">
           <input
             type="number"
             id="idCell"
             placeholder=" Digite o ID do celular e clique em 'Escolher.' "
           />
-          <button id="idCellButton" onclick="findByIdCells()">
+          <button class="default-button" onclick="findByIdCells()">
             Escolher
           </button>
         </div>
-        <div id="chosedcell"></div>
+        <div id="chosedCell"></div>
       </div>
       <h2>Celulares disponíveis:</h2>
       <div class="home_container">
-        <div class="cellList" id="CellList"></div>
+        <div class="cellList" id="cellList"></div>
       </div>
     </section>
-
     <script src="./assets/script.js"></script>
   </body>
 </html>
