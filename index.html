@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Kohaute Place</title>
+    <link rel="stylesheet" href="./assets/style.css" />
+  </head>
+  <body>
+    <nav>
+      <h1>WellCome to my marketplace</h1>
+      <a href="">Principal</a>
+      <a href="">Incluir novo</a>
+    </nav>
+    <section class="home">
+      <div class="home_header Header">
+        <div class="row">
+          </div>
+          <div class="header_options options">
+            <div class="options_bag bag">
+              <img
+                src="./assets/icons/sacola.svg"
+                width="40px"
+                class="bag_icon"
+                alt="Buy Bag"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+      <h2>Celular escolhido:</h2>
+      <div class="chosed-cell-space">
+        <div id="chosed-cell-input-space">
+          <input
+            type="number"
+            id="idCell"
+            placeholder=" Digite o ID do celular e clique em 'Escolher.' "
+          />
+          <button id="idCellButton" onclick="findByIdCells()">
+            Escolher
+          </button>
+        </div>
+        <div id="chosedcell"></div>
+      </div>
+      <h2>Celulares disponíveis:</h2>
+      <div class="home_container">
+        <div class="cellList" id="CellList"></div>
+      </div>
+    </section>
+
+    <script src="./assets/script.js"></script>
+  </body>
+</html>
