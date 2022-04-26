@@ -58,6 +58,7 @@ async function findByIdCells() {
     showMessageAlert();
     return;
   }
+  document.querySelector(".cellList").style.display = "none"
   const chosedCellDiv = document.querySelector('#chosedCell');
 
   chosedCellDiv.innerHTML = `

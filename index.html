@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Kohaute Place</title>
     <link rel="stylesheet" href="./assets/style.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
+<link rel="shortcut icon" type="image/svg" href="./assets/icons/shop.svg">
   </head>
   <body>
     <nav>
@@ -17,12 +19,14 @@
           <div class="header_logo logo">
           <div class="header_options options">
             <div class="options_bag bag">
-              <img
-                src="./assets/icons/sacola.svg"
-                width="40px"
-                class="bag_icon"
-                alt="Buy Bag"
-              />
+              <input
+            type="text"
+            id="idCell"
+            placeholder=" Digite o ID do celular e clique em 'Escolher.' "
+          />
+          <button class="default-button" onclick="findByIdCells()">
+            <i class="bi bi-search"></i>
+          </button>
             </div>
           </div>
         </div>
@@ -65,21 +69,11 @@
         </div>
         </div>
       </section>
-      <h2>Celular escolhido:</h2>
       <div class="chosed_cell-space">
         <div id="chosed_cell-space-input">
-          <input
-            type="text"
-            id="idCell"
-            placeholder=" Digite o ID do celular e clique em 'Escolher.' "
-          />
-          <button class="default-button" onclick="findByIdCells()">
-            Escolher
-          </button>
         </div>
         <div id="chosedCell"></div>
       </div>
-      <h2>Celulares disponíveis:</h2>
       <div class="home_container">
         <div class="cellList" id="cellList"></div>
       </div>
