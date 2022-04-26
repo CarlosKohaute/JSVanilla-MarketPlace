@@ -27,7 +27,8 @@
           </div>
         </div>
       </div>
-      <section class="create-button-modal">
+      <section class="options">
+        <span class="msg-alert"></span>
         <button type="button" class="default-button" onclick="openModal()">Cadastrar novo Celular</button>
       </section>
       <section class="modal-overlay" id="overlay">
@@ -44,7 +45,7 @@
             <input type="number" name="price" id="price" placeholder="Preço do Celular">
             <textarea  type="text" name="description" id="description" placeholder='Descrição do Celular' rows="3" > </textarea>
             <input type="text" name="photo" id="photo" placeholder="Link da foto do Celular">
-            <button id="button-form-modal" onclick="registerCell()">Cadastrar</button>
+            <button id="button-form-modal" onclick="submitCell()">Cadastrar</button>
           </div>
         </div>
       </section>
@@ -68,7 +69,7 @@
       <div class="chosed_cell-space">
         <div id="chosed_cell-space-input">
           <input
-            type="number"
+            type="text"
             id="idCell"
             placeholder=" Digite o ID do celular e clique em 'Escolher.' "
           />

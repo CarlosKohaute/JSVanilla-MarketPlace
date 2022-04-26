@@ -150,7 +150,6 @@ nav > h3{
   font-weight: 600;
   border-radius: 0.6rem;
   width: 21rem;
-  margin-top: 0.8rem;
   cursor: pointer;
   transition: all 0.3s ease-in-out;
   font-size: 1rem;
@@ -321,9 +320,33 @@ textarea {
   color: rgb(220, 220, 220)
 }
 
-.create-button-modal {
+.options {
   display: flex;
-  justify-content: flex-end;
+  align-items: center;
+  max-width: 1110px;
+  justify-content: space-between;
+}
+
+.msg-alert{
+  text-align: center;
+  z-index: 99999;
+  font-weight: 600;
+}
+
+.sucess{
+  background-color: #a4ffa4;
+  color: #006905;
+  border: solid 1px #006905;
+  padding: 1rem;
+  border-radius: 0.3rem;
+}
+
+.danger{
+  background-color: #ffa4a4;
+  color: #690000;
+  border: solid 1px #690000;
+  padding: 1rem;
+  border-radius: 0.3rem;
 }
 
 .Actions {

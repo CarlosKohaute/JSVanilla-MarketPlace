@@ -1,4 +1,5 @@
 const baseURL = 'http://localhost:3000/cells';
+const msgAlert = document.querySelector('.msg-alert');
 
 async function findAllCells() {
   const response = await fetch(`${baseURL}/find-cells`);
@@ -9,14 +10,14 @@ async function findAllCells() {
     document.querySelector('#cellList').insertAdjacentHTML(
       'beforeend',
       `
-      <div class="cellListItem" id ="cellListItem_${cell.id}">
+      <div class="cellListItem" id ="cellListItem_${cell._id}">
           <div>
             <div class="cellListItem_name">${cell.name}</div>
             <div class="cellListItem_price">R$ ${cell.price}</div>
             <div class="cellListItem_description">${cell.description}  </div>
             <div class="cellListItem_actions Actions">
-            <button class="Actions_edit btn" onclick="openModal('${cell.id}')">Editar</button>
-            <button class="Actions_delete btn" onclick="openModalDelete('${cell.id}')">Apagar</button>
+            <button class="Actions_edit btn" onclick="openModal('${cell._id}')">Editar</button>
+            <button class="Actions_delete btn" onclick="openModalDelete('${cell._id}')">Apagar</button>
             </div>
       </div>
       <img class="cellListItem_photo"
@@ -31,23 +32,44 @@ async function findAllCells() {
   });
 }
 
+findAllCells();
+
 async function findByIdCells() {
   const id = document.querySelector('#idCell').value;
-  const response = await fetch(`${baseURL}/find-cells/${id}`);
+
+  if (id == '') {
+    localStorage.setItem('messagem', 'Digite um ID para pesquisar!');
+    localStorage.setItem('type', 'danger');
+
+    msgAlert.innerText = localStorage.getItem('message');
+    msgAlert.classList.add(localStorage.getItem('type'));
+    closeMessageAlert();
+    return;
+  }
+  const response = await fetch(`${baseURL}/find-one-cell/${id}`);
   const cell = await response.json();
 
+  if (cell.message != undefined) {
+    localStorage.setItem('messagem', cell.message);
+    localStorage.setItem('type', 'danger');
+
+    msgAlert.innerText = localStorage.getItem('message');
+    msgAlert.classList.add(localStorage.getItem('type'));
+    showMessageAlert();
+    return;
+  }
   const chosedCellDiv = document.querySelector('#chosedCell');
 
   chosedCellDiv.innerHTML = `
-  <div class="cellCardItem" id ="cellListItem_${cell.id}">
+  <div class="cellCardItem" id ="cellListItem_${cell._id}">
   <div>
     <div class="cellCardItem_name">${cell.name}</div>
     <div class="cellCardItem_price">R$ ${cell.price}</div>
     <div class="cellCardItem_description">${cell.description}  </div>
 
     <div class="cellListItem_actions Actions">
-    <button class="Actions_edit btn" onclick="openModal(${cell.id})">Editar</button>
-    <button class="Actions_delete btn" openModalDelete(${cell.id})">Apagar</button>
+    <button class="Actions_edit btn" onclick="openModal('${cell._id}')">Editar</button>
+    <button class="Actions_delete btn" openModalDelete('${cell._id}')">Apagar</button>
     </div>
 </div>
 <img class="cellCardItem_photo"
@@ -56,23 +78,22 @@ alt="${cell.name}"
 />
 </div>`;
 }
-findAllCells();
 
-async function openModal(id = null) {
-  if (id != null) {
+async function openModal(id = '') {
+  if (id != '') {
     document.querySelector('#tittle-header-modal').innerText =
       'Atualizar um celular';
 
     document.querySelector('#button-form-modal').innerText = 'Atualizar';
 
-    const response = await fetch(`${baseURL}/find-cells/${id}`);
+    const response = await fetch(`${baseURL}/find-one-cell/${id}`);
     const cell = await response.json();
 
     document.querySelector('#name').value = cell.name;
     document.querySelector('#price').value = cell.price;
     document.querySelector('#description').value = cell.description;
     document.querySelector('#photo').value = cell.photo;
-    document.querySelector('#id').value = cell.id;
+    document.querySelector('#id').value = cell._id;
   } else {
     document.querySelector('#tittle-header-modal').innerText =
       'Cadastrar um celular';
@@ -90,7 +111,7 @@ function closeModal() {
   document.querySelector('#photo').value = '';
 }
 
-async function registerCell() {
+async function submitCell() {
   const id = document.querySelector('#id').value;
   const name = document.querySelector('#name').value;
   const price = document.querySelector('#price').value;
@@ -105,7 +126,7 @@ async function registerCell() {
     photo,
   };
 
-  const editionModeAtivated = id > 0;
+  const editionModeAtivated = id != '';
 
   const endpoint =
     baseURL + (editionModeAtivated ? `/update/${id}` : `/create`);
@@ -119,32 +140,32 @@ async function registerCell() {
     body: JSON.stringify(cell),
   });
   const newCell = await response.json();
+  document.location.reload(true);
 
-  const html = `
-<div class="cellCardItem" id ="cellListItem_${cell.id}">
-<div>
-  <div class="cellCardItem_name">${newCell.name}</div>
-  <div class="cellCardItem_price">R$ ${newCell.price}</div>
-  <div class="cellCardItem_description">${newCell.description}  </div>
+  if (newCell.message != undefined) {
+    localStorage.setItem('messagem', newCell.message);
+    localStorage.setItem('type', 'danger');
 
-  <div class="cellListItem_actions Actions">
-  <button class="Actions_edit btn" onclick="openModal(${cell.id})">Editar</button>
-  <button class="Actions_delete btn" openModalDelete(${cell.id})">Apagar</button>
-  </div>
-</div>
-<img class="cellCardItem_photo"
-src="${newCell.photo}"
-alt="${newCell.name}"
-/>
-</div>`;
-
-  if (editionModeAtivated) {
-    document.querySelector(`#cellListItem_${id}`).outerHTML = html;
-  } else {
-    document
-      .querySelector('#cellList')
-      .insertAdjacentHTML('beforeend', html);
+    msgAlert.innerText = localStorage.getItem('message');
+    msgAlert.classList.add(localStorage.getItem('type'));
+    showMessageAlert();
+    return;
   }
+  if (editionModeAtivated) {
+    localStorage.setItem('messagem', 'Celular atualizado com sucesso!');
+    localStorage.setItem('type', 'sucess');
+
+    msgAlert.innerText = localStorage.getItem('message');
+    msgAlert.classList.add(localStorage.getItem('type'));
+  } else {
+    localStorage.setItem('messagem', 'Celular cadastrado com sucesso!');
+    localStorage.setItem('type', 'sucess');
+
+    msgAlert.innerText = localStorage.getItem('message');
+    msgAlert.classList.add(localStorage.getItem('type'));
+  }
+  document.location.reload(true);
+
   closeModal();
 }
 
@@ -172,10 +193,26 @@ async function deleteCell(id) {
   });
 
   const result = await response.json();
-  alert(result.message);
 
-  document.getElementById('cellList').innerHTML = '';
+  localStorage.setItem('message', result.message);
+  localStorage.setItem('type', 'sucess');
+  document.location.reload(true);
 
   closeModalDelete();
-  findAllCells();
 }
+
+function closeMessageAlert() {
+  setTimeout(function () {
+    msgAlert.innerText = '';
+    msgAlert.classList.remove(localStorage.getItem('type'));
+    localStorage.clear();
+  }, 3000);
+}
+
+function showMessageAlert() {
+  msgAlert.innerText = localStorage.getItem('message');
+  msgAlert.classList.add(localStorage.getItem('type'));
+  closeMessageAlert();
+}
+
+showMessageAlert();
