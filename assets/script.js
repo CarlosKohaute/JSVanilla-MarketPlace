@@ -35,7 +35,7 @@ async function findAllCells() {
 findAllCells();
 
 async function findByIdCells() {
-  const id = document.querySelector('#idCell').value;
+  const id = document.querySelector('#search-input').value;
 
   if (id == '') {
     localStorage.setItem('messagem', 'Digite um ID para pesquisar!');
@@ -58,7 +58,9 @@ async function findByIdCells() {
     showMessageAlert();
     return;
   }
-  document.querySelector(".cellList").style.display = "none"
+
+  document.querySelector('.list-all').style.display = 'block';
+  document.querySelector('.cellList').style.display = 'none';
   const chosedCellDiv = document.querySelector('#chosedCell');
 
   chosedCellDiv.innerHTML = `

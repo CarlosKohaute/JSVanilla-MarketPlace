@@ -16,9 +16,14 @@ nav{
   border-radius: 7rem;
   margin-top: -1rem;
 }
+nav > img{
+  width: 3%;
+  position: absolute;
+  margin-left: 2%;
+}
 nav > h3{
   font-family: 'EXO';
-  margin-left: 2rem;
+  margin-left: 8%;
   font-size: 2rem;
 }
 
@@ -31,7 +36,7 @@ nav > h3{
   );
   min-height: calc(100vh - 60px);
   margin: 20px;
-  padding: 1px;
+  padding: 5px;
   border-radius: 20px;
   color: black;
   box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.8);
@@ -47,7 +52,7 @@ nav > h3{
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 0.5rem;
+  padding: 1rem;
 }
 
 @media (max-width: 350px) {
@@ -82,14 +87,18 @@ nav > h3{
   padding: 1em;
   width: 20rem;
   display: flex;
-  margin: 1rem;
-  justify-content: space-around;
+  margin-right: 1rem;
+  justify-content: space-between;
 }
 
 .cellCardItem {
-  margin: 20px 0;
   height: 150px;
-  width: 100%;
+  width: 315px;
+}
+
+.cellCardItem_photo{
+  height: 150px;
+  margin-right: -60px;
 }
 @media (max-width: 400px) {
   .cellCardItem,
@@ -136,11 +145,15 @@ nav > h3{
   padding: 2rem;
 }
 
-#idCell {
+#search-input {
+  font-size: 1rem;
+  outline: none;
+  margin-right: 1rem;
   padding: 0.8rem;
-  width: 20rem;
+  width: 15rem;
   border: none;
   border-radius: 0.8rem;
+  border: 1px solid #fff;
 }
 
 .default-button {
@@ -150,12 +163,31 @@ nav > h3{
   color: #3c5aa6;
   font-weight: 600;
   border-radius: 0.6rem;
-  width: 21rem;
+  margin-top: .5rem;
+  width: 16.5rem;
   cursor: pointer;
   transition: all 0.3s ease-in-out;
   font-size: 1rem;
 }
 .default-button:hover {
+  background-color: #3c5aa6;
+  color: rgb(220, 220, 220)
+}
+
+.search-button{
+  background-color: transparent;
+  border: 1px solid #3c5aa6;
+  padding: 0.6rem;
+  color: #3c5aa6;
+  font-weight: 600;
+  border-radius: 0.6rem;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  font-size: 1rem;
+  text-align: center;
+}
+
+.search-button:hover {
   background-color: #3c5aa6;
   color: rgb(220, 220, 220)
 }
@@ -447,4 +479,15 @@ textarea {
 .btn_delete_yes:hover{
   background-color: #00b309;
   color: white;
+}
+
+.list-all{
+  text-decoration: none;
+  text-align: center;
+  display: none;
+  margin-right: 1rem;
+}
+
+.btn-list-cad{
+  display: flex;
 }

@@ -11,6 +11,7 @@
   </head>
   <body>
     <nav>
+      <img src="./assets/icons/shop.svg" alt="">
       <h3>Seja bem vindo!</h3>
     </nav>
     <section class="home">
@@ -21,10 +22,10 @@
             <div class="options_bag bag">
               <input
             type="text"
-            id="idCell"
-            placeholder=" Digite o ID do celular e clique em 'Escolher.' "
+            id="search-input"
+            placeholder=" Digite o ID do celular.' "
           />
-          <button class="default-button" onclick="findByIdCells()">
+          <button class="search-button" onclick="findByIdCells()">
             <i class="bi bi-search"></i>
           </button>
             </div>
@@ -33,8 +34,11 @@
       </div>
       <section class="options">
         <span class="msg-alert"></span>
+        <div class="btn-list-cad">
+        <a href="/" class="default-button list-all">Listar todos os celulares</a>
         <button type="button" class="default-button" onclick="openModal()">Cadastrar novo Celular</button>
-      </section>
+      </div>
+    </section>
       <section class="modal-overlay" id="overlay">
         <div class="card-modal">
           <div class="modal-header">
@@ -72,10 +76,10 @@
       <div class="chosed_cell-space">
         <div id="chosed_cell-space-input">
         </div>
-        <div id="chosedCell"></div>
       </div>
       <div class="home_container">
         <div class="cellList" id="cellList"></div>
+        <div id="chosedCell"></div>
       </div>
     </section>
     <script src="./assets/script.js"></script>
