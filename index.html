@@ -25,7 +25,7 @@
             id="search-input"
             placeholder=" Digite o ID do celular.' "
           />
-          <button class="search-button" onclick="findByIdCells()">
+          <button class="search-button">
             <i class="bi bi-search"></i>
           </button>
             </div>
@@ -36,14 +36,14 @@
         <span class="msg-alert"></span>
         <div class="btn-list-cad">
         <a href="/" class="default-button list-all">Listar todos os celulares</a>
-        <button type="button" class="default-button" onclick="openModal()">Cadastrar novo Celular</button>
+        <button type="button" id="add-cell" class="default-button">Cadastrar novo Celular</button>
       </div>
     </section>
       <section class="modal-overlay" id="overlay">
         <div class="card-modal">
           <div class="modal-header">
             <h2 id="tittle-header-modal">Cadastrar novo Celular</h2>
-            <a onclick="closeModal()"
+            <a id="close-modal-submit"
             class="close-modal">X</a>
           </div>
           <div class="modal-body">
@@ -53,7 +53,7 @@
             <input type="number" name="price" id="price" placeholder="Preço do Celular">
             <textarea  type="text" name="description" id="description" placeholder='Descrição do Celular' rows="3" > </textarea>
             <input type="text" name="photo" id="photo" placeholder="Link da foto do Celular">
-            <button id="button-form-modal" onclick="submitCell()">Cadastrar</button>
+            <button id="button-form-modal">Cadastrar</button>
           </div>
         </div>
       </section>
@@ -61,13 +61,14 @@
           <div class="modal"> 
             <div class="modal-header">
             <h2 id="tittle-header-modal">Confirmação de deleção</h2>
-            <a onclick="closeModalDelete()"
+            <a 
+            id="close-modal-delete"
             class="close-modal">X</a>
           </div>
         <div class="modal-body-delete">
           <p>Deseja realmente apagar esse celular?</p>
           <div class="btns_delete">
-            <button class="btn_delete_no btn_delete" onclick="closeModalDelete()">Não!</button>
+            <button class="btn_delete_no btn_delete">Não!</button>
             <button class="btn_delete_yes btn_delete" >Sim!</button>
           </div>
         </div>
@@ -82,6 +83,6 @@
         <div id="chosedCell"></div>
       </div>
     </section>
-    <script src="./assets/script.js"></script>
+    <script type="module" src="./assets/script.js"></script>
   </body>
 </html>
