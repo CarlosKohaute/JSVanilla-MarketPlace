@@ -1,0 +1,13 @@
+@import url('https://fonts.googleapis.com/css2?family=League+Gothic&display=swap');
+
+body,
+html {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  min-height: 100vh;
+  overflow: auto;
+  background-color: rgb(160, 160, 190);
+  font-family: 'League Gothic', sans-serif;
+  font-size: 1.5rem;
+}
