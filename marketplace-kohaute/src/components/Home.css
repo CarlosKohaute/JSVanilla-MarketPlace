@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css?family=Exo:400,700");
+
 .Home {
   position: relative;
   background-image: radial-gradient(
@@ -11,4 +13,109 @@
   border-radius: 20px;
   color: black;
   box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.8);
+}
+
+.Home__container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@media (max-width: 350px) {
+  .Home__container {
+    justify-content: unset;
+  }
+}
+
+.CellList {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 25px 50px;
+}
+
+@media (max-width: 1220px) {
+  .CellList {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 840px) {
+  .CellList {
+    grid-template-columns: 1fr;
+  }
+}
+
+.CellListItem {
+  font-family: "Exo";
+  background: rgba(0,200, 255, 0.1);
+  border-radius: 10px;
+  padding: 10px;
+  width: 300px;
+  display: flex;
+  justify-content: space-around;
+}
+
+@media (max-width: 400px) {
+  .CellListItem {
+    width: 210px;
+    height: 180px;
+  }
+}
+
+.CellListItem > div {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+}
+
+.CellListItem__name {
+  font-size: 1em;
+  font-weight: 600;
+  line-height: 100%;
+}
+
+.CellListItem__description {
+  font-size: 0.5em;
+}
+
+.CellListItem__price {
+  color: darkviolet;
+  font-size: 1rem;
+}
+
+.Actions {
+  display: flex;
+  justify-content: space-between;
+}
+
+.Action__add,
+.Actions__remove {
+  border: none;
+  color: white;
+  border-radius: 5px;
+  font-family: "Exo", sans-serif;
+  padding: 5px;
+  max-width: 280px;
+  text-align: center;
+  font-weight: 700;
+  text-transform: uppercase;
+  cursor: pointer;
+  width: 48%;
+}
+
+.Actions__remove {
+  background-color: red;
+}
+
+.Actions__add {
+  background-color: #003cff;
+}
+
+.Actions__add-fill {
+  width: 100%;
+}
+
+.CellListItem__photo {
+  height: 150px;
+  margin-right: -60px;
 }
